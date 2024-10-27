@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyAqidahMobile" parent="Theme.Material3.Light">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/purple2</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="progressBarStyle">@color/purple3</item>
+    </style>
+
+
+    <style name="Theme.MyAqidahMobile" parent="Base.Theme.MyAqidahMobile" />
+</resources>

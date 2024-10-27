@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">MyAqidah Mobile</string>
+    <string name="beranda">Beranda</string>
+    <string name="pelayanan">Pelayanan</string>
+    <string name="registrasi">Registrasi</string>
+    <string name="jadwal_dokter">Jadwal Dokter</string>
+    <string name="profile">Profile</string>
+
+
+    <string name="onboarding1">Menjadi Rumah Sakit yang terkemuka yang memberikan Pelayanan Kesehatan Prima</string>
+    <string name="onboarding2">Melayani Dengan Kasih Sayang dan Profesional</string>
+    <string name="something_wrong">Terjadi Kesalahan</string>
+    <string name="gawat_darurat">Gawat Darurat</string>
+    <string name="notifikasi">Notifikasi</string>
+
+    <string name="message_password">Password harus minimal 8 karakter</string>
+    <string name="btn_ready_login">Sudah punya akun? Login</string>
+
+    <string-array name="gender_array">
+        <item>Pria</item>
+        <item>Wanita</item>
+    </string-array>
+
+    <string name="welcome">Hi, %1$s!</string>
+    <string name="lihat_lebih_sedikit">Lihat Lebih Sedikit</string>
+    <string name="lihat_selengkapnya">Lihat Selengkapnya</string>
+    <string name="failed_to_load_information">Failed to load information: %1$s</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="article_image">article_image</string>
+    <string name="no_data">Data tidak tersedia</string>
+
+
+</resources>

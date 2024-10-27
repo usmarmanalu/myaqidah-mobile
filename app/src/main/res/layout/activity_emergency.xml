@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    android:background="@color/white"
+    tools:context=".ui.home.menu.EmergencyActivity">
+
+    <!-- Emergency Assistance Text -->
+    <TextView
+        android:id="@+id/text_emergency_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Dapatkan bantuan gawat darurat medis dari Rumah Sakit Aqidah"
+        android:textSize="18sp"
+        android:textColor="@color/purple3"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- Lottie Animation for Emergency -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_emergency"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/text_emergency_info"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="emergency.json"
+        app:lottie_loop="true" />
+
+    <!-- Card View for Doctor Information -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lottie_emergency"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <!-- Doctor Image -->
+            <ImageView
+                android:id="@+id/iv_emergency"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/emergency48"/>
+
+            <!-- Doctor Info -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Doctor Name -->
+                <TextView
+                    android:id="@+id/text_doctor_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hubungi Kami"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple3" />
+
+                <!-- Doctor Phone Number -->
+                <TextView
+                    android:id="@+id/text_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(021) 731 0851"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Call Button -->
+            <Button
+                android:id="@+id/btn_call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple3"
+                android:textColor="@android:color/white"
+                android:text="Hubungi"
+                android:background="@drawable/border_buttom"
+                android:drawableTint="@color/white"
+                android:drawableEnd="@drawable/baseline_call_24"
+                android:drawablePadding="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card View for Map Information -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMaps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <!-- Hospital Info -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Hospital Name -->
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rumah Sakit Aqidah"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/purple3" />
+
+                <!-- Hospital Address -->
+                <TextView
+                    android:id="@+id/text_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jl. Raden Patah No.40, RT.004/RW.010, Parung Serab, Kec. Ciledug, Kota Tangerang, Banten 15153."
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Directions Button -->
+            <TextView
+                android:id="@+id/btn_maps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Petunjuk Arah"
+                android:textColor="@color/purple3"
+                android:drawableEnd="@drawable/baseline_person_pin_circle_24"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/green"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

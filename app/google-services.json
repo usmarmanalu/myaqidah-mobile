@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804461413831",
+    "project_id": "myaqidah-8f9df",
+    "storage_bucket": "myaqidah-8f9df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804461413831:android:07d44cb6309a4b199dc5e2",
+        "android_client_info": {
+          "package_name": "com.dicoding.myaqidahmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjLA4vvGXICU0G57h2C-n2mLIGfTYIg4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

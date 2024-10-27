@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home"
+
+        android:title="@string/beranda" />
+    <item
+        android:id="@+id/navigation_pelayanan"
+        android:icon="@drawable/service"
+        android:title="@string/pelayanan" />
+    <item
+        android:id="@+id/navigation_registrasi"
+        android:icon="@drawable/registration"
+        android:title="@string/registrasi" />
+    <item
+        android:id="@+id/navigation_jadwal"
+        android:icon="@drawable/patient_department"
+        android:title="@string/jadwal_dokter" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/person"
+        android:title="@string/profile" />
+
+</menu>

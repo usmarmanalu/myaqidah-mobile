@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_emergency"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="profile.json"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:lottie_loop="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/item_profile_option"
+            android:id="@+id/menuProfilePasien" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/green" />
+
+        <include
+            layout="@layout/item_profile_option"
+            android:id="@+id/menuBerikanPenilaian" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/green" />
+
+        <include
+            layout="@layout/item_profile_option"
+            android:id="@+id/menuSyaratKetentuan" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+
+            android:background="@color/green" />
+
+        <include
+            layout="@layout/item_profile_option"
+            android:id="@+id/menuBahasa" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/green" />
+
+        <include
+            layout="@layout/item_profile_option"
+            android:id="@+id/menuPusatBantuan" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/green" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keluar"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:background="@drawable/border_buttom"
+            android:paddingVertical="12dp"
+            android:drawablePadding="8dp" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ver 8.0.1 (310)"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/grey"
+            android:layout_gravity="start"
+            android:paddingTop="16dp" />
+    </LinearLayout>
+</LinearLayout>

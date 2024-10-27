@@ -1,0 +1,40 @@
+<resources>
+    <!-- Tema umum untuk Activity yang menggunakan Toolbar -->
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Disable the default action bar -->
+        <item name="windowActionBar">false</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:statusBarColor">@color/purple2</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="progressBarStyle">@color/purple3</item>
+    </style>
+
+    <!-- PopupOverlay style -->
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:colorBackground">@color/purple2</item>
+        <item name="android:statusBarColor">@color/purple2</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="progressBarStyle">@color/purple3</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
+        <!-- Base application theme -->
+        <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+            <!-- Customize your action bar color -->
+            <item name="colorPrimary">@color/purple2</item>
+            <item name="colorPrimaryDark">@color/purple2</item>
+            <item name="colorAccent">@color/purple3</item>
+            <item name="progressBarStyle">@color/purple3</item>
+            <item name="fontFamily">@font/roboto_regular</item>
+            <!-- Customize action bar title text color -->
+            <item name="android:textColorPrimary">@color/black</item>
+        </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">12sp</item> <!-- Ukuran teks lebih kecil -->
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+
+</resources>
