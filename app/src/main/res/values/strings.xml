@@ -28,6 +28,7 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="article_image">article_image</string>
     <string name="no_data">Data tidak tersedia</string>
+    <string name="tekan_sekali_lagi_untuk_keluar">Tekan sekali lagi untuk keluar</string>
 
 
 </resources>

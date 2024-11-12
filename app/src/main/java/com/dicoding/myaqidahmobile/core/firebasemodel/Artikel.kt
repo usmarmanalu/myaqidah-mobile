@@ -1,4 +1,4 @@
-package com.dicoding.myaqidahmobile.core.model
+package com.dicoding.myaqidahmobile.core.firebasemodel
 
 import android.os.Parcelable
 import kotlinx.parcelize.*

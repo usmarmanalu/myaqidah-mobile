@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        window.statusBarColor = ContextCompat.getColor(this, R.color.purple2)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.blue_soft)
         WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
 
         setSupportActionBar(binding.toolbar)
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                         doubleBackToExitPressedOnce = true
                         Toast.makeText(
                             this@MainActivity,
-                            "Tekan sekali lagi untuk keluar",
+                            getString(R.string.tekan_sekali_lagi_untuk_keluar),
                             Toast.LENGTH_SHORT
                         ).show()
                     }

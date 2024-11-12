@@ -11,6 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.databinding.FragmentProfileBinding
 import com.dicoding.myaqidahmobile.ui.onboarding.OnboardingScreenActivity
+import com.dicoding.myaqidahmobile.ui.profile.profilepasien.*
+import com.dicoding.myaqidahmobile.ui.profile.rating.*
+import com.dicoding.myaqidahmobile.ui.profile.terms.*
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
@@ -38,6 +41,8 @@ class ProfileFragment : Fragment() {
             showLogoutConfirmationDialog()
         }
 
+        onClickProfile()
+
         // Set text for each menu item
         binding.menuProfilePasien.titleTextView.text = "Profil Pasien"
         binding.menuBerikanPenilaian.titleTextView.text = "Berikan Penilaian"
@@ -51,6 +56,24 @@ class ProfileFragment : Fragment() {
         binding.menuSyaratKetentuan.iconImageView.setImageResource(R.drawable.icon_terms)
         binding.menuBahasa.iconImageView.setImageResource(R.drawable.icon_language)
         binding.menuPusatBantuan.iconImageView.setImageResource(R.drawable.icon_help)
+    }
+
+    private fun onClickProfile() {
+        binding.menuProfilePasien.root.setOnClickListener {
+            val intent = Intent(requireContext(), ProfilePasienActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.menuBerikanPenilaian.root.setOnClickListener {
+            val intent = Intent(requireContext(), RatingActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.menuSyaratKetentuan.root.setOnClickListener {
+            val intent = Intent(requireContext(), TermsActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun showLogoutConfirmationDialog() {

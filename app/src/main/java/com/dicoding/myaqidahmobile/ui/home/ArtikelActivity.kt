@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.dicoding.myaqidahmobile.R
-import com.dicoding.myaqidahmobile.core.model.Artikel
+import com.dicoding.myaqidahmobile.core.firebasemodel.Artikel
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
 import com.dicoding.myaqidahmobile.databinding.ActivityArtikelBinding
 

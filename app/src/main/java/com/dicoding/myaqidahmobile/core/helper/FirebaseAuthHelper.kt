@@ -1,14 +1,8 @@
 package com.dicoding.myaqidahmobile.core.helper
 
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.*
-
-data class UserData(
-    val name: String,
-    val dateOfBirth: String,
-    val gender: String,
-    val email: String
-)
 
 class FirebaseAuthHelper(private val auth: FirebaseAuth, private val db: FirebaseFirestore) {
 
@@ -25,9 +19,9 @@ class FirebaseAuthHelper(private val auth: FirebaseAuth, private val db: Firebas
                     val user = auth.currentUser
                     user?.let {
                         saveUserData(it.uid, userData, onSuccess, onFailure)
-                    } ?: onFailure(Exception("User not found after creation"))
+                    } ?: onFailure(Exception("Pengguna tidak ditemukan"))
                 } else {
-                    onFailure(task.exception ?: Exception("Sign Up Failed"))
+                    onFailure(task.exception ?: Exception("Pendaftaran Gagal"))
                 }
             }
     }

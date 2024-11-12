@@ -99,4 +99,8 @@ dependencies {
     // Bar
     implementation (libs.mpandroidchart)
 
+    // Google Sign-In
+    implementation(libs.play.services.auth)
+    implementation(libs.gms.play.services.fitness)
+
 }

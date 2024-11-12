@@ -70,9 +70,10 @@ class ScheduleFragment : Fragment() {
                     showLoading(false)
                     resource.data?.let { doctors ->
                         originalDoctorsList = doctors
-                        doctorAdapter.submitList(doctors) // Use submitList to update the adapter
+                        doctorAdapter.submitList(doctors)
                     }
                 }
+
                 is Resource.Error -> {
                     showLoading(false)
                     binding.viewError.root.visibility = View.VISIBLE

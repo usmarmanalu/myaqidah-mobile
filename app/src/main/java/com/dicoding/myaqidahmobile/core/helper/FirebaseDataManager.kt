@@ -1,13 +1,17 @@
 package com.dicoding.myaqidahmobile.core.helper
 
-import com.dicoding.myaqidahmobile.core.model.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.*
 
 class FirebaseDataManager {
 
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+//    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+    fun getUserReference(userId: String): DocumentReference {
+        return firestore.collection("users").document(userId)
+    }
 
     fun getCurrentUserName(userId: String, onSuccess: (String) -> Unit) {
         firestore.collection("users").document(userId)
@@ -19,6 +23,30 @@ class FirebaseDataManager {
                 }
             }
     }
+
+    fun getCurrentUser(userId: String, onSuccess: (String, String, String, String, String, String) -> Unit) {
+        firestore.collection("users").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    val name = document.getString("name").orEmpty()
+                    val dateBird = document.getString("dateOfBirth").orEmpty()
+                    val gender = document.getString("gender").orEmpty()
+                    val noHp = document.getString("noHp").orEmpty()
+                    val email = document.getString("email").orEmpty()
+                    val profileImageUrl = document.getString("profileImageUrl").orEmpty()
+                    onSuccess.invoke(name, dateBird, gender, noHp, email, profileImageUrl)
+                } else {
+                    // Optional: Handle if the document is not found
+                    onSuccess.invoke("", "", "", "", "", "")
+                }
+            }
+            .addOnFailureListener {
+                // Optional: Handle failure case, e.g., log error or invoke with empty values
+                onSuccess.invoke("", "", "", "", "", "")
+            }
+    }
+
 
     fun getHospitalInformation(
         onSuccess: (String, String, String, String, String) -> Unit,

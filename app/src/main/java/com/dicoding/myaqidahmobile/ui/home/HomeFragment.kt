@@ -1,5 +1,6 @@
 package com.dicoding.myaqidahmobile.ui.home
 
+import com.dicoding.myaqidahmobile.ui.home.sectionMenu.MonitorKesehatanActivity
 import android.animation.*
 import android.annotation.*
 import android.content.*
@@ -11,7 +12,7 @@ import androidx.fragment.app.*
 import androidx.recyclerview.widget.*
 import com.dicoding.myaqidahmobile.R
 import com.dicoding.myaqidahmobile.core.helper.*
-import com.dicoding.myaqidahmobile.core.model.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.core.ui.*
 import com.dicoding.myaqidahmobile.databinding.*
 import com.dicoding.myaqidahmobile.ui.home.menu.*

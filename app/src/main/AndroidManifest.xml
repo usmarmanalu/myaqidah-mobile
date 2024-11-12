@@ -5,6 +5,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        tools:ignore="SelectedPhotoAccess" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
     <application
         android:name=".MyApplication"
@@ -19,9 +26,24 @@
         android:theme="@style/Theme.MyAqidahMobile"
         tools:targetApi="31">
         <activity
-            android:name=".ui.jadwal.favorite.FavoriteActivity"
-            android:theme="@style/AppTheme"
+            android:name=".ui.home.sectionMenu.StepHistoryActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.profile.terms.TermsActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.profile.rating.RatingActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.profile.profilepasien.ProfilePasienActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.jadwal.favorite.FavoriteActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.home.ArtikelActivity"
             android:exported="false"
@@ -111,6 +133,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.auth.api.fitness.SIGN_IN"
+            android:value="your-client-id.apps.googleusercontent.com" />
     </application>
 
 </manifest>
