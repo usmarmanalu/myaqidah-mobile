@@ -118,7 +118,7 @@ class ProfilePasienActivity : AppCompatActivity() {
             )
         } ?: run {
             hideLoadingDialog()
-            showSnackbar("User not logged in.")
+            showSnackbar("Pengguna tidak ditemukan.")
         }
     }
 

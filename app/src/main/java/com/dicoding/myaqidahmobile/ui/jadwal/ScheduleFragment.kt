@@ -103,7 +103,7 @@ class ScheduleFragment : Fragment() {
                 it.name.contains(query, ignoreCase = true)
             }
         }
-        doctorAdapter.submitList(filteredList) // Use submitList for filtering
+        doctorAdapter.submitList(filteredList)
         showLoading(false)
     }
 

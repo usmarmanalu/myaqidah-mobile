@@ -13,17 +13,13 @@ class FirebaseAuthHelper(private val auth: FirebaseAuth, private val db: Firebas
         onSuccess: (FirebaseUser?) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    user?.let {
-                        saveUserData(it.uid, userData, onSuccess, onFailure)
-                    } ?: onFailure(Exception("Pengguna tidak ditemukan"))
-                } else {
-                    onFailure(task.exception ?: Exception("Pendaftaran Gagal"))
-                }
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            task.isSuccessful
+            val user = auth.currentUser
+            user?.let {
+                saveUserData(it.uid, userData, onSuccess, onFailure)
             }
+        }
     }
 
     fun login(

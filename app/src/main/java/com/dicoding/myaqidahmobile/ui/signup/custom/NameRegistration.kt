@@ -33,7 +33,7 @@ class NameRegistration : AppCompatEditText, View.OnTouchListener {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         textSize = 14f
-        hint = "Nama Lengkap"
+        hint = "Nama Lengkap Pasien"
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
     }
 

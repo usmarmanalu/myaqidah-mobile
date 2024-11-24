@@ -1,8 +1,10 @@
 package com.dicoding.myaqidahmobile.core.helper
 
+import android.util.*
 import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.*
+import kotlin.Pair
 
 class FirebaseDataManager {
 
@@ -149,4 +151,25 @@ class FirebaseDataManager {
                 onFailure(exception)
             }
     }
+
+    fun getDataBedKTT(onSuccess: (List<BedKTT>) -> Unit, onFailure: (Exception) -> Unit) {
+        firestore.collection("bed_ktt")
+            .get()
+            .addOnSuccessListener { documents ->
+                val listBedKTT = mutableListOf<BedKTT>()
+                for (document in documents) {
+                    try {
+                        val bedKTT = document.toObject(BedKTT::class.java)
+                        listBedKTT.add(bedKTT)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+                onSuccess(listBedKTT)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
 }

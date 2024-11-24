@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace = "com.dicoding.myaqidahmobile"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.dicoding.myaqidahmobile"

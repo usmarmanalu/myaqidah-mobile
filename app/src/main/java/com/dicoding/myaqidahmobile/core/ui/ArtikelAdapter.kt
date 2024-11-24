@@ -58,5 +58,4 @@ class ArtikelAdapter(private val listArtikel: ArrayList<Artikel>) :
 
     override fun getItemCount(): Int = listArtikel.size
 
-
 }

@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
                         setDisplayShowTitleEnabled(true)
                         when (destination.id) {
                             R.id.navigation_pelayanan -> title = "Pelayanan"
-                            R.id.navigation_registrasi -> title = "Registrasi"
+                            R.id.navigation_registrasi -> title = "Registrasi Pasien"
                             R.id.navigation_profile -> title = "Profile"
                         }
                     }

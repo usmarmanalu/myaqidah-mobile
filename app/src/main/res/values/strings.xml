@@ -21,6 +21,22 @@
         <item>Wanita</item>
     </string-array>
 
+    <string-array name="goldar_array">
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+    </string-array>
+
+    <string-array name="agama_array">
+        <item>Islam</item>
+        <item>Kristen</item>
+        <item>Katholik</item>
+        <item>Hindu</item>
+        <item>Budha</item>
+        <item>Khonghucu</item>
+    </string-array>
+
     <string name="welcome">Hi, %1$s!</string>
     <string name="lihat_lebih_sedikit">Lihat Lebih Sedikit</string>
     <string name="lihat_selengkapnya">Lihat Selengkapnya</string>
@@ -29,6 +45,8 @@
     <string name="article_image">article_image</string>
     <string name="no_data">Data tidak tersedia</string>
     <string name="tekan_sekali_lagi_untuk_keluar">Tekan sekali lagi untuk keluar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

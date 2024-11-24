@@ -170,7 +170,6 @@
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="8dp"
         android:entries="@array/gender_array"
-
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
