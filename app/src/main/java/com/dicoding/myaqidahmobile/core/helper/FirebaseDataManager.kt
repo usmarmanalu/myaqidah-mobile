@@ -1,14 +1,11 @@
 package com.dicoding.myaqidahmobile.core.helper
 
-import android.util.*
 import com.dicoding.myaqidahmobile.core.firebasemodel.*
-import com.google.firebase.auth.*
 import com.google.firebase.firestore.*
-import kotlin.Pair
 
 class FirebaseDataManager {
 
-//    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    //    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     fun getUserReference(userId: String): DocumentReference {
@@ -26,7 +23,10 @@ class FirebaseDataManager {
             }
     }
 
-    fun getCurrentUser(userId: String, onSuccess: (String, String, String, String, String, String) -> Unit) {
+    fun getCurrentUser(
+        userId: String,
+        onSuccess: (String, String, String, String, String, String) -> Unit
+    ) {
         firestore.collection("users").document(userId)
             .get()
             .addOnSuccessListener { document ->
@@ -105,9 +105,14 @@ class FirebaseDataManager {
             .get()
             .addOnSuccessListener { documents ->
                 val items = documents.map { document ->
-                    val image = document.getString("image").orEmpty()
-                    val url = document.getString("url").orEmpty()
-                    image to url
+                    try {
+                        val image = document.getString("image").orEmpty()
+                        val url = document.getString("url").orEmpty()
+                        image to url
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        "" to ""
+                    }
                 }
                 onSuccess.invoke(items)
             }
@@ -142,8 +147,12 @@ class FirebaseDataManager {
             .addOnSuccessListener { documents ->
                 val articles = mutableListOf<Artikel>()
                 for (document in documents) {
-                    val artikel = document.toObject(Artikel::class.java)
-                    articles.add(artikel)
+                    try {
+                        val artikel = document.toObject(Artikel::class.java)
+                        articles.add(artikel)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
                 onSuccess(articles)
             }

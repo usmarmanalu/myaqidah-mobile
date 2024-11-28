@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
@@ -51,7 +52,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBc1Vbywy0RE6Y4WxCCvlS_qfqp1H64qrU" />
+            android:value="AIzaSyCgLu2xjbK9ncVBxYQ7QZI0tX8T_z3ouRA" />
 
         <activity
             android:name=".ui.home.menu.MapsActivity"
@@ -134,9 +135,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.google.android.gms.auth.api.fitness.SIGN_IN"
-            android:value="your-client-id.apps.googleusercontent.com" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.auth.api.fitness.SIGN_IN"-->
+<!--            android:value="your-client-id.apps.googleusercontent.com" />-->
     </application>
 
 </manifest>

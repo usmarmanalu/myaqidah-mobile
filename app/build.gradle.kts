@@ -55,7 +55,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Firebase
+//  Firebase
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
@@ -99,8 +99,12 @@ dependencies {
     // Bar
     implementation (libs.mpandroidchart)
 
-    // Google Sign-In
+    // Google Auth
     implementation(libs.play.services.auth)
-    implementation(libs.gms.play.services.fitness)
 
+    // Google Fitness
+    implementation(libs.gms.play.services.fitness)
+    implementation(libs.play.services.location)
+
+    implementation(platform(libs.firebase.bom))
 }

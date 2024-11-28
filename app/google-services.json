@@ -12,7 +12,20 @@
           "package_name": "com.dicoding.myaqidahmobile"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "804461413831-1f2e7adom90tdlpjcnk6ues68as6m9ge.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dicoding.myaqidahmobile",
+            "certificate_hash": "f99e49fb661e8b5348d5bb61b709cc24eb789ceb"
+          }
+        },
+        {
+          "client_id": "804461413831-b0vupkpeo15an9kfu8j2mf04n4au58da.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAjLA4vvGXICU0G57h2C-n2mLIGfTYIg4M"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804461413831-b0vupkpeo15an9kfu8j2mf04n4au58da.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
