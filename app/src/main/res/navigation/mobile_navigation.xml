@@ -22,18 +22,9 @@
         tools:layout="@layout/fragment_service" >
         <action
             android:id="@+id/action_navigation_service_to_navigation_registrasi"
-            app:destination="@id/navigation_registrasi" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_registrasi"
-        android:name="com.dicoding.myaqidahmobile.ui.registrasi.RegistrasiFragment"
-        android:label="@string/registrasi"
-        tools:layout="@layout/fragment_registrasi" >
-        <action
-            android:id="@+id/action_navigation_registrasi_to_navigation_schedule"
             app:destination="@id/navigation_jadwal" />
     </fragment>
+
     <fragment
         android:id="@+id/navigation_jadwal"
         android:name="com.dicoding.myaqidahmobile.ui.jadwal.ScheduleFragment"

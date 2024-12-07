@@ -1,10 +1,346 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".ui.home.sectionMenu.JanjiTemuActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linier"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <!-- Card 1: Informasi Pasien -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_style"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_patient_info"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Informasi Pasien"
+                            android:textAppearance="?attr/textAppearanceSubtitle1"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tv_terdaftar"
+                        android:text="@string/terdaftar"
+                        android:textSize="12sp"
+                        style="@style/FieldLabel" />
+                    <TextView
+                        android:id="@+id/tv_kunjungan_terakhir"
+                        android:text="@string/kunjungan_terakhir"
+                        android:textSize="12sp"
+                        style="@style/FieldLabel" />
+                    <TextView
+                        android:id="@+id/tv_goldar"
+                        android:text="@string/golongan_darah"
+                        android:textSize="12sp"
+                        style="@style/FieldLabel" />
+                    <TextView
+                        android:id="@+id/tv_usia"
+                        android:text="@string/usia"
+                        android:textSize="12sp"
+                        style="@style/FieldLabel" />
+                    <TextView
+                        android:id="@+id/tv_jaminan"
+                        android:text="@string/jaminan"
+                        android:textSize="12sp"
+                        style="@style/FieldLabel" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 2: Formulir Janji Temu -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                android:layout_marginBottom="50dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/card_style2"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_form" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Formulir Janji Temu"
+                            android:textAppearance="?attr/textAppearanceSubtitle1"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/grey" />
+
+                    <!-- Form Fields -->
+                    <TextView
+                        android:id="@+id/tv_no_rekam_medis"
+                        style="@style/FieldLabel"
+                        android:text="@string/no_rekam_medis"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_nama_pasien"
+                        style="@style/FieldLabel"
+                        android:text="@string/nama_pasien"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:text="Instalasi"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_instalasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/instalasi_options"
+                        android:minHeight="48dp"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/grey" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="16dp"
+                        android:text="Poliklinik"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_poliklinik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="16dp"
+                        android:text="DPJP"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_dpjp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="16dp"
+                        android:text="Asal Rujukan"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_asal_rujukan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/asal_rujukan_options"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="16dp"
+                        android:text="Rujukan/Faskes"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_rujukan_faskes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/rujukan_faskes_options"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="16dp"
+                        android:text="Cara Bayar"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_cara_bayar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/cara_bayar_options"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="16dp"
+                        android:text="Perusahaan"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner_perusahaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/perusahaan_options"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <!-- More Fields -->
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="Tanggal Kunjungan"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/edittext_tanggal_kunjungan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="Pilih Tanggal"
+                        android:inputType="date"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:layout_marginTop="8dp"
+                        android:text="Jam Kunjungan"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/edittext_jam_kunjungan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="Atur Jam Kunjungan"
+                        android:inputType="time"
+                        android:minHeight="48dp"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Buttons -->
+    <!-- LinearLayout for Buttons -->
+    <LinearLayout
+        android:id="@+id/linierbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center">
+
+        <!-- Button: Daftar -->
+        <Button
+            android:id="@+id/btnDaftar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Daftar"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:background="@drawable/border_buttom"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="12dp" />
+
+        <!-- Button: Batal -->
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Batal"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:background="@drawable/border_buttom"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:layout_marginStart="8dp"
+            android:paddingVertical="12dp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

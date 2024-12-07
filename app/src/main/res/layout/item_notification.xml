@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/notification_background"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <!-- Konten teks di sebelah kiri -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTimeNotification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="Tanggal: 01 Jan 2024"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/tvDpjp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginStart="8dp"
+                    android:text="DPJP: Dr. Susilo, Sp.JP"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <!-- Instalasi -->
+                <TextView
+                    android:id="@+id/tvInstalasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Instalasi: Rawat Jalan"
+                    android:textColor="#616161"
+                    android:layout_marginStart="8dp"
+                    android:textSize="14sp"/>
+
+                <!-- Poliklinik -->
+                <TextView
+                    android:id="@+id/tvPoliklinik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Poliklinik: Kardiologi"
+                    android:textColor="#616161"
+                    android:textSize="14sp" />
+
+                <!-- DPJP -->
+
+            </LinearLayout>
+
+            <!-- Gambar di sebelah kanan -->
+<!--            <ImageView-->
+<!--                android:id="@+id/imageViewDoctor"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:src="@drawable/ambulance" />-->
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>

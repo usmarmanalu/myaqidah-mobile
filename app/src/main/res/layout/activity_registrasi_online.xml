@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".ui.registrasi.RegistrasiFragment">
+    android:layout_marginStart="16dp"
+    tools:context=".ui.registrasi.RegistrasiOnlineActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -236,8 +237,128 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_agama" />
 
+        <!-- TextInputLayout for AutoCompleteTextView (Place) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_place"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:hint="Prov/Kab/Kota"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/spinner_agama"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_agama">
+
+            <AutoCompleteTextView
+                android:id="@+id/ed_place"
+                style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:hint="Prov/Kab/Kota" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Alamat Lengkap Label -->
+        <TextView
+            android:id="@+id/tv_alamatLengkap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat Lengkap"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ti_place" />
+
+        <!-- EditText for Alamat Lengkap -->
+        <EditText
+            android:id="@+id/ed_alamatLengkap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Alamat Lengkap"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alamatLengkap" />
+
+        <TextView
+            android:id="@+id/label_nasabah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nasabah"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_alamatLengkap" />
+
+        <Spinner
+            android:id="@+id/spinner_nasabah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/nasabah_array"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_nasabah" />
+
+        <TextView
+            android:id="@+id/label_nikah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status Perkawinan"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_nasabah" />
+
+        <Spinner
+            android:id="@+id/spinner_nikah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/nikah_array"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_nikah" />
+
+        <TextView
+            android:id="@+id/tv_jkn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No. Kartu JKN"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_nikah" />
+
+        <!-- EditText for Alamat Lengkap -->
+        <EditText
+            android:id="@+id/ed_jkn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="No. Kartu JKN"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_jkn" />
+
         <Button
-            android:id="@+id/btnNext"
+            android:id="@+id/btnSimpan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -246,13 +367,13 @@
             android:backgroundTint="@color/purple3"
             android:drawablePadding="8dp"
             android:paddingVertical="12dp"
-            android:text="Selanjutnya"
+            android:text="Simpan"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinner_agama" />
+            app:layout_constraintTop_toBottomOf="@id/ed_jkn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -5,21 +5,29 @@ import com.google.firebase.firestore.*
 
 class FirebaseDataManager {
 
-    //    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     fun getUserReference(userId: String): DocumentReference {
-        return firestore.collection("users").document(userId)
+        return firestore.collection("users").document(userId).collection("dataUser")
+            .document(userId)
     }
 
     fun getCurrentUserName(userId: String, onSuccess: (String) -> Unit) {
-        firestore.collection("users").document(userId)
+        firestore.collection("users")
+            .document(userId)
+            .collection("dataUser")
+            .document(userId)
             .get()
             .addOnSuccessListener { document ->
-                if (document != null) {
+                if (document != null && document.exists()) {
                     val name = document.getString("name")
                     onSuccess.invoke(name.orEmpty())
+                } else {
+                    onSuccess.invoke("")
                 }
+            }
+            .addOnFailureListener { _ ->
+                onSuccess.invoke("")
             }
     }
 
@@ -28,6 +36,8 @@ class FirebaseDataManager {
         onSuccess: (String, String, String, String, String, String) -> Unit
     ) {
         firestore.collection("users").document(userId)
+            .collection("dataUser")
+            .document(userId)
             .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
@@ -161,9 +171,11 @@ class FirebaseDataManager {
             }
     }
 
-    fun getDataBedKTT(onSuccess: (List<BedKTT>) -> Unit, onFailure: (Exception) -> Unit) {
-        firestore.collection("bed_ktt")
-            .get()
+    fun getDataBedKTT(
+        onSuccess: (List<BedKTT>) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        firestore.collection("bed_ktt").get()
             .addOnSuccessListener { documents ->
                 val listBedKTT = mutableListOf<BedKTT>()
                 for (document in documents) {
@@ -180,5 +192,4 @@ class FirebaseDataManager {
                 onFailure(exception)
             }
     }
-
 }

@@ -10,10 +10,7 @@
         android:id="@+id/navigation_pelayanan"
         android:icon="@drawable/service"
         android:title="@string/pelayanan" />
-    <item
-        android:id="@+id/navigation_registrasi"
-        android:icon="@drawable/registration"
-        android:title="@string/registrasi" />
+
     <item
         android:id="@+id/navigation_jadwal"
         android:icon="@drawable/patient_department"

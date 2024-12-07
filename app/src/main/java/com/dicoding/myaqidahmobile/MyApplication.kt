@@ -3,6 +3,7 @@ package com.dicoding.myaqidahmobile
 import android.app.*
 import com.dicoding.myaqidahmobile.core.di.*
 import com.dicoding.myaqidahmobile.di.*
+import com.google.firebase.FirebaseApp
 import org.koin.android.ext.koin.*
 import org.koin.core.context.*
 import org.koin.core.logger.*
@@ -24,5 +25,7 @@ class MyApplication : Application() {
                 )
             )
         }
+
+        FirebaseApp.initializeApp(this)
     }
 }

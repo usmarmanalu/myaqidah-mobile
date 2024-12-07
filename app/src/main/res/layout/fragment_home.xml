@@ -7,6 +7,13 @@
         <!-- Your variable declarations (if any) -->
     </data>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.home.HomeFragment">
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -158,4 +165,18 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_titleartikel" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_registrasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:fabSize="normal"
+            android:tooltipText="Registrasi Online"
+            android:foregroundGravity="bottom"
+            app:srcCompat="@drawable/registration"
+            app:tint="@color/blue_soft"
+            android:layout_gravity="bottom|end" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

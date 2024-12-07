@@ -17,6 +17,7 @@ import com.dicoding.myaqidahmobile.core.ui.*
 import com.dicoding.myaqidahmobile.databinding.*
 import com.dicoding.myaqidahmobile.ui.home.menu.*
 import com.dicoding.myaqidahmobile.ui.home.sectionMenu.*
+import com.dicoding.myaqidahmobile.ui.registrasi.*
 import com.google.android.material.snackbar.*
 import com.google.firebase.auth.*
 
@@ -77,6 +78,11 @@ class HomeFragment : Fragment() {
         loadDataForCarouselBerita()
         loadDataForCarouselGallery()
         loadArticles()
+
+        binding.fabRegistrasi.setOnClickListener {
+            val intent = Intent(requireContext(), RegistrasiOnlineActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun showLoadingDialog() {

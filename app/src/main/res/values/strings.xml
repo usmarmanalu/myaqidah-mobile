@@ -28,6 +28,24 @@
         <item>O</item>
     </string-array>
 
+    <string-array name="nasabah_array">
+        <item>Umum</item>
+        <item>Pribadi</item>
+    </string-array>
+
+    <string-array name="kelurga_array">
+        <item>Ayah</item>
+        <item>Ibu</item>
+        <item>Anak</item>
+        <item>Saudara Kandung</item>
+
+    </string-array>
+
+    <string-array name="nikah_array">
+        <item>Menikah</item>
+        <item>Belum Menikah</item>
+    </string-array>
+
     <string-array name="agama_array">
         <item>Islam</item>
         <item>Kristen</item>
@@ -35,6 +53,47 @@
         <item>Hindu</item>
         <item>Budha</item>
         <item>Khonghucu</item>
+    </string-array>
+
+    <string-array name="instalasi_options">
+        <item>IGD/Instalasi Gawat Darurat</item>
+        <item>Poliklinik/Instalasi Rawat Jalan</item>
+        <item>Instalasi Rawat Inap</item>
+        <item>Instalasi Laboratorium</item>
+        <item>Instalasi Radiologi</item>
+        <item>Ruang OKA</item>
+        <item>Ruang VK</item>
+    </string-array>
+
+    <string-array name="asal_rujukan_options">
+        <item>Datang Sendiri</item>
+        <item>Faskes 1</item>
+        <item>Faskes 2 (RS)</item>
+        <item>Pasien Luar</item>
+        <item>Rujukan Internal</item>
+    </string-array>
+
+    <string-array name="cara_bayar_options">
+        <item>Asuransi Swasta</item>
+        <item>BPJS Ketenagakerjaan</item>
+        <item>JKN/BPJS Kesehatan</item>
+        <item>Karyawan RS Aqidah</item>
+        <item>Pembiayaan Dinkes</item>
+        <item>Perusahaan</item>
+        <item>TDC</item>
+        <item>Umum</item>
+    </string-array>
+
+    <string-array name="rujukan_faskes_options">
+        <item>Datang Sendiri</item>
+        <item>Faskes 1</item>
+        <item>Faskes 2 (RS)</item>
+        <item>Pasien Luar</item>
+        <item>Rujukan Internal</item>
+    </string-array>
+
+    <string-array name="perusahaan_options">
+        <item>Perusahaan</item>
     </string-array>
 
     <string name="welcome">Hi, %1$s!</string>
@@ -45,8 +104,15 @@
     <string name="article_image">article_image</string>
     <string name="no_data">Data tidak tersedia</string>
     <string name="tekan_sekali_lagi_untuk_keluar">Tekan sekali lagi untuk keluar</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="golongan_darah">Golongan Darah: </string>
+    <string name="usia">Usia: </string>
+    <string name="jaminan">Jaminan: </string>
+    <string name="kunjungan_terakhir">Kunjungan Terakhir: </string>
+    <string name="terdaftar">Terdaftar: </string>
+    <string name="no_rekam_medis">No. Rekam Medis: </string>
+    <string name="nama_pasien">Nama Pasien: </string>
+    <string name="no_notifications">Tidak ada Notifikasi</string>
+    <string name="kunjungan_terakhir_belum_ada_kunjungan">Kunjungan Terakhir: belum ada kunjungan</string>
 
 
 </resources>

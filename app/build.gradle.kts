@@ -19,6 +19,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_TOKEN", "\"pk.eyJ1IjoiYXJpZmFpemluIiwiYSI6ImNrYTI2c3R1cjAwNXAzbm1zaDYyZW1ra2cifQ.okSWF0zf58rWkhoVuYjShQ\"")
+
     }
 
     buildTypes {
@@ -40,6 +42,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -81,7 +84,9 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.activity.ktx) //by viewModels()
+    implementation(libs.androidx.lifecycle.runtime.ktx) //lifecycleScope
+    implementation(libs.androidx.lifecycle.livedata.ktx) //asLiveData
 
     // Injection
     implementation(libs.koin.android)
@@ -105,6 +110,7 @@ dependencies {
     // Google Fitness
     implementation(libs.gms.play.services.fitness)
     implementation(libs.play.services.location)
+    implementation(libs.play.services.maps)
 
     implementation(platform(libs.firebase.bom))
 }

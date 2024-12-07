@@ -1,40 +1,37 @@
 package com.dicoding.myaqidahmobile.ui.home.sectionMenu
 
 import android.Manifest
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.drawable.ColorDrawable
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import android.annotation.*
+import android.content.*
+import android.content.pm.*
+import android.graphics.drawable.*
+import android.os.*
+import android.view.*
+import android.widget.*
+import androidx.appcompat.app.*
+import androidx.core.app.*
+import androidx.core.content.*
 import com.dicoding.myaqidahmobile.R
+import com.dicoding.myaqidahmobile.core.helper.*
 import com.dicoding.myaqidahmobile.core.utils.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
-import com.dicoding.myaqidahmobile.databinding.ActivityMonitorKesehatanBinding
+import com.dicoding.myaqidahmobile.databinding.*
 import com.github.mikephil.charting.components.*
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.*
 import com.google.android.gms.auth.api.signin.*
-import com.google.android.gms.fitness.Fitness
-import com.google.android.gms.fitness.data.DataType
-import com.google.android.gms.fitness.request.DataReadRequest
-import com.google.android.gms.fitness.result.DataReadResponse
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.android.gms.fitness.*
+import com.google.android.gms.fitness.data.*
+import com.google.android.gms.fitness.request.*
+import com.google.android.gms.fitness.result.*
 import java.util.*
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.*
 
+@Suppress("DEPRECATION")
 class MonitorKesehatanActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMonitorKesehatanBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    private lateinit var firebaseAuthHelper: FirebaseAuthHelper
+
     private var googleAccount: GoogleSignInAccount? = null
     private val stepsData = mutableListOf<Entry>()
     private val caloriesData = mutableListOf<Entry>()
@@ -44,16 +41,13 @@ class MonitorKesehatanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMonitorKesehatanBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        initializeFirebase()
+
+        firebaseAuthHelper = FirebaseAuthHelper()
+
         setupActionBar()
         checkAndRequestPermissions()
-        loadTargetData()
-        binding.btnSetTarget.setOnClickListener { setStepTarget() }
-    }
 
-    private fun initializeFirebase() {
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        binding.btnSetTarget.setOnClickListener { setStepTarget() }
     }
 
     private fun setupActionBar() {
@@ -61,25 +55,44 @@ class MonitorKesehatanActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
             title = "Monitor Kesehatan"
             setHomeAsUpIndicator(getWhiteBackArrowDrawable(this@MonitorKesehatanActivity))
-            setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this@MonitorKesehatanActivity, R.color.purple2)))
+            setBackgroundDrawable(
+                ColorDrawable(
+                    ContextCompat.getColor(
+                        this@MonitorKesehatanActivity,
+                        R.color.purple2
+                    )
+                )
+            )
         }
     }
 
     @SuppressLint("InlinedApi")
     private fun checkAndRequestPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACTIVITY_RECOGNITION), REQUEST_CODE_PERMISSION_ACTIVITY_RECOGNITION)
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACTIVITY_RECOGNITION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACTIVITY_RECOGNITION),
+                REQUEST_CODE_PERMISSION_ACTIVITY_RECOGNITION
+            )
         } else {
             accessGoogleFit()
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE_PERMISSION_ACTIVITY_RECOGNITION && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             accessGoogleFit()
         } else {
-            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Akses diizinkan", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -112,15 +125,17 @@ class MonitorKesehatanActivity : AppCompatActivity() {
             Fitness.getHistoryClient(this, account)
                 .readData(readRequest)
                 .addOnSuccessListener { response -> processFitnessData(response) }
-                .addOnFailureListener { e -> Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show() }
+                .addOnFailureListener { _ ->
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 
     private fun processFitnessData(response: DataReadResponse) {
         stepsData.clear()
         caloriesData.clear()
-        var dayIndex = 0
 
+        var dayIndex = 0
         response.buckets.forEach { bucket ->
             var dailySteps = 0
             bucket.dataSets.forEach { dataSet ->
@@ -132,79 +147,69 @@ class MonitorKesehatanActivity : AppCompatActivity() {
             }
 
             val dailyCalories = (dailySteps * 0.04).toFloat()
-            stepsData.add(Entry(dayIndex.toFloat(), dailySteps.toFloat()))
-            caloriesData.add(Entry(dayIndex.toFloat(), dailyCalories))
-            dayIndex++
+
+            // Ensure that daily steps and calories are not negative before adding them
+            if (dailySteps >= 0 && dailyCalories >= 0) {
+                stepsData.add(Entry(dayIndex.toFloat(), dailySteps.toFloat()))
+                caloriesData.add(Entry(dayIndex.toFloat(), dailyCalories))
+                dayIndex++
+            }
         }
 
-        saveFitnessDataToFirebase()
-        setupChart()
         updateUiWithLatestData()
+        setupChart()
     }
 
+
+    @SuppressLint("SetTextI18n")
     private fun updateUiWithLatestData() {
         val latestStep = stepsData.lastOrNull()?.y ?: 0f
         val latestCalories = caloriesData.lastOrNull()?.y ?: 0f
-        binding.tvSteps.text = "Langkah: ${latestStep.toInt()}"
-        binding.tvCalories.text = "Kalori terbakar: ${latestCalories.toInt()}"
+        binding.tvSteps.text = "Total langkah hari ini: ${latestStep.toInt()}"
+        binding.tvCalories.text = "Total Kalori hari ini: ${latestCalories.toInt()}"
     }
 
+    private fun saveTargetToFirebase(targetSteps: Int) {
+        val latestStep = stepsData.lastOrNull()?.y ?: 0f
+
+        firebaseAuthHelper.saveTargetData(
+            stepTarget = targetSteps,
+            stepsAchieved = latestStep,
+            onSuccess = {
+                Toast.makeText(this, "Berhasil tersimpan", Toast.LENGTH_SHORT).show()
+            },
+            onFailure = {
+                Toast.makeText(this, "Gagal ${it.message}", Toast.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun setStepTarget() {
         val targetStepsText = binding.etStepTarget.text.toString()
-        val targetSteps = targetStepsText.toIntOrNull()
-        if (targetSteps == null) {
+
+        if (targetStepsText.isBlank()) {
             binding.etStepTarget.error = "Masukkan target langkah"
+            return
+        }
+
+        val targetSteps = try {
+            targetStepsText.toInt()
+        } catch (e: NumberFormatException) {
+            binding.etStepTarget.error = "Masukkan angka yang valid"
             return
         }
 
         stepTarget = targetSteps
         saveTargetToFirebase(stepTarget)
+
         binding.tvTargetSteps.text = "Target Langkah: $stepTarget langkah/hari"
-    }
-
-    private fun saveTargetToFirebase(targetSteps: Int) {
-        val userId = auth.currentUser?.uid ?: return
-        val data = mapOf("targetSteps" to targetSteps)
-        db.collection("users").document(userId).set(data)
-            .addOnSuccessListener { Toast.makeText(this, "Target updated", Toast.LENGTH_SHORT).show() }
-            .addOnFailureListener { e -> Toast.makeText(this, "Failed: ${e.message}", Toast.LENGTH_SHORT).show() }
-    }
-
-    private fun saveFitnessDataToFirebase() {
-        val userId = auth.currentUser?.uid ?: return
-        val currentDate = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 0)
-            set(Calendar.MINUTE, 0)
-            set(Calendar.SECOND, 0)
-            set(Calendar.MILLISECOND, 0)
-        }.time
-
-        val fitnessData = mapOf(
-            "steps" to (stepsData.lastOrNull()?.y ?: 0f),
-            "calories" to (caloriesData.lastOrNull()?.y ?: 0f),
-            "date" to currentDate,
-        )
-
-        db.collection("users").document(userId)
-            .collection("fitnessDataGooglefit")
-            .document(currentDate.toString())
-            .set(fitnessData)
-            .addOnSuccessListener { Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show() }
-            .addOnFailureListener { e -> Toast.makeText(this, "Failed: ${e.message}", Toast.LENGTH_SHORT).show() }
-    }
-
-    private fun loadTargetData() {
-        val userId = auth.currentUser?.uid ?: return
-        db.collection("users").document(userId).get()
-            .addOnSuccessListener { document ->
-                stepTarget = (document["targetSteps"] as? Long)?.toInt() ?: 0
-                binding.tvTargetSteps.text = "Target Langkah: $stepTarget langkah/hari"
-            }
+        binding.etStepTarget.text.clear()
     }
 
     private fun setupChart() {
         // Prepare data set for steps
-        val lineDataSetSteps = LineDataSet(stepsData, "Steps").apply {
+        val lineDataSetSteps = LineDataSet(stepsData, "Langkah").apply {
             color = ContextCompat.getColor(this@MonitorKesehatanActivity, R.color.blue)
             valueTextColor = ContextCompat.getColor(this@MonitorKesehatanActivity, R.color.white)
             valueTextSize = 12f
@@ -215,7 +220,7 @@ class MonitorKesehatanActivity : AppCompatActivity() {
         }
 
         // Prepare data set for calories
-        val lineDataSetCalories = LineDataSet(caloriesData, "Calories").apply {
+        val lineDataSetCalories = LineDataSet(caloriesData, "Kalori").apply {
             color = ContextCompat.getColor(this@MonitorKesehatanActivity, R.color.red)
             valueTextColor = ContextCompat.getColor(this@MonitorKesehatanActivity, R.color.white)
             valueTextSize = 12f
@@ -237,7 +242,7 @@ class MonitorKesehatanActivity : AppCompatActivity() {
                 valueFormatter = MyXAxisValueFormatter()
                 granularity = 1f
                 isGranularityEnabled = true
-                setLabelCount(7, true)
+                setLabelCount(stepsData.size, true)
                 textColor = ContextCompat.getColor(this@MonitorKesehatanActivity, R.color.black)
                 setDrawGridLines(false)
             }
@@ -259,9 +264,10 @@ class MonitorKesehatanActivity : AppCompatActivity() {
             description.isEnabled = false
             animateX(1000)
 
-            invalidate()
+            invalidate() // Refresh the chart
         }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_step_history, menu)
