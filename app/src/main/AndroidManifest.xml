@@ -27,6 +27,14 @@
         android:theme="@style/Theme.MyAqidahMobile"
         tools:targetApi="31">
         <activity
+            android:name=".ui.service.navigation.RawatInapActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.service.navigation.RawatJalanActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".ui.home.sectionMenu.JanjiTemuHistoryActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />

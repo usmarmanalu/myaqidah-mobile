@@ -1,15 +1,13 @@
 package com.dicoding.myaqidahmobile.core.ui
 
+import android.annotation.*
 import android.content.*
 import android.view.*
 import androidx.recyclerview.widget.*
 import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.databinding.*
-import com.dicoding.myaqidahmobile.ui.home.menu.*
 import com.dicoding.myaqidahmobile.ui.home.sectionMenu.*
-import java.text.*
-import java.util.*
 
 class NotificationAdapter(
     private val notifications: List<JanjiTemuDokter>
@@ -17,6 +15,8 @@ class NotificationAdapter(
 
     inner class NotificationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemNotificationBinding.bind(view)
+
+        @SuppressLint("SetTextI18n")
         fun bind(janjiTemuDokter: JanjiTemuDokter) {
 
             binding.tvTimeNotification.text = janjiTemuDokter.dateTimestamp.toString()

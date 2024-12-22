@@ -192,4 +192,44 @@ class FirebaseDataManager {
                 onFailure(exception)
             }
     }
+
+    fun getRawatJalan(
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+
+    ) {
+        firestore.collection("rawat_jalan")
+            .limit(1)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val document = documents.documents[0]
+                    val image = document.getString("image").orEmpty()
+                    onSuccess.invoke(image)
+                }
+            }
+            .addOnFailureListener { exception ->
+                onFailure.invoke(exception)
+            }
+    }
+
+    fun getRawatInap(
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+
+    ) {
+        firestore.collection("rawat_inap")
+            .limit(1)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val document = documents.documents[0]
+                    val image = document.getString("image").orEmpty()
+                    onSuccess.invoke(image)
+                }
+            }
+            .addOnFailureListener { exception ->
+                onFailure.invoke(exception)
+            }
+    }
 }

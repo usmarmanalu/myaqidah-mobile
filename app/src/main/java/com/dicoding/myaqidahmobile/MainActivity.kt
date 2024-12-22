@@ -3,6 +3,7 @@ package com.dicoding.myaqidahmobile
 import android.annotation.*
 import android.content.pm.*
 import android.os.*
+import android.view.*
 import android.widget.*
 import androidx.activity.*
 import androidx.appcompat.app.*

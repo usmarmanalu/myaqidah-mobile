@@ -10,7 +10,7 @@ class MyXAxisValueFormatter : ValueFormatter() {
 
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
         val date = Calendar.getInstance().apply {
-            add(Calendar.DAY_OF_YEAR, value.toInt()) // Convert the value to an integer for day offset
+            add(Calendar.DAY_OF_YEAR, value.toInt())
         }.time
         return dateFormat.format(date)
     }

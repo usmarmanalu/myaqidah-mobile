@@ -1,16 +1,17 @@
 package com.dicoding.myaqidahmobile.ui.home.menu
 
-import android.content.Intent
-import android.graphics.drawable.ColorDrawable
-import android.net.Uri
-import android.os.Bundle
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.dicoding.myaqidahmobile.R
+import android.content.*
+import android.graphics.drawable.*
+import android.net.*
+import android.os.*
+import android.view.*
+import androidx.appcompat.app.*
+import androidx.core.content.*
+import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
-import com.dicoding.myaqidahmobile.databinding.ActivityEmergencyBinding
+import com.dicoding.myaqidahmobile.databinding.*
 
+@Suppress("DEPRECATION")
 class EmergencyActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEmergencyBinding
@@ -53,7 +54,10 @@ class EmergencyActivity : AppCompatActivity() {
                 onBackPressed()
                 true
             }
-            else -> super.onOptionsItemSelected(item)
+
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
         }
     }
 }

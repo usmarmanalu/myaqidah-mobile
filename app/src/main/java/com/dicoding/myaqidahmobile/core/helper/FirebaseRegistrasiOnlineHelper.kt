@@ -4,10 +4,14 @@ import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.*
 
+@Suppress("LABEL_NAME_CLASH")
 class FirebaseRegistrasiOnlineHelper(
     private val auth: FirebaseAuth = FirebaseAuth.getInstance(),
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 ) {
+    /**
+     * Simpan data registrasi berdasarkan nama pengguna.
+     */
 
     fun saveDataRegistrasiOnline(
         userData: RegistrasiOnline,
@@ -72,10 +76,10 @@ class FirebaseRegistrasiOnlineHelper(
 
                 // Ambil data dari koleksi 'data_pasien' dalam dokumen 'userName' di koleksi 'registrasi_online'
                 db.collection("registrasi_online")
-                    .document(userName) // Gunakan userName sebagai ID dokumen di registrasi_online
-                    .collection("data_pasien") // Koleksi untuk data pasien
-                    .document(userName) // Gunakan userName sebagai ID dokumen di data_pasien
-                    .get() // Ambil data pasien dari dokumen tersebut
+                    .document(userName)
+                    .collection("data_pasien")
+                    .document(userName)
+                    .get()
                     .addOnSuccessListener { regDoc ->
                         val data = regDoc.toObject(RegistrasiOnline::class.java)
                         if (data != null) {
@@ -85,14 +89,17 @@ class FirebaseRegistrasiOnlineHelper(
                         }
                     }
                     .addOnFailureListener { exception ->
-                        onFailure(exception) // Jika terjadi kesalahan saat mengambil data
+                        onFailure(exception)
                     }
             }
             .addOnFailureListener { exception ->
-                onFailure(exception) // Jika terjadi kesalahan saat mengambil nama pengguna
+                onFailure(exception)
             }
     }
 
+    /**
+     * Simpan data keluarga berdasarkan nama pengguna.
+     */
 
     fun saveDataKeluarga(
         dataKeluarga: DataKeluargaPasien,
@@ -117,16 +124,19 @@ class FirebaseRegistrasiOnlineHelper(
 
                 // Simpan data keluarga dengan userName sebagai ID dokumen
                 db.collection("registrasi_online")
-                    .document(userName) // Gunakan userName sebagai ID dokumen di registrasi_online
+                    .document(userName)
                     .collection("data_keluarga")
-                    .document(userName) // Gunakan userName sebagai ID dokumen di data_keluarga
-                    .set(dataKeluarga) // Menyimpan data keluarga pada dokumen yang sudah ada
+                    .document(userName)
+                    .set(dataKeluarga)
                     .addOnSuccessListener { onSuccess() }
                     .addOnFailureListener { exception -> onFailure(exception) }
             }
             .addOnFailureListener { exception -> onFailure(exception) }
     }
 
+    /**
+     * Ambil data keluarga berdasarkan nama pengguna.
+     */
     fun fetchDataKeluarga(
         onSuccess: (DataKeluargaPasien) -> Unit,
         onFailure: (Exception) -> Unit
@@ -149,26 +159,30 @@ class FirebaseRegistrasiOnlineHelper(
 
                 // Mengambil data keluarga dari koleksi 'data_keluarga' berdasarkan userName
                 db.collection("registrasi_online")
-                    .document(userName) // Akses dokumen berdasarkan userName
+                    .document(userName)
                     .collection("data_keluarga")
-                    .document(userName) // Akses dokumen berdasarkan userName di data_keluarga
-                    .get() // Mengambil dokumen
+                    .document(userName)
+                    .get()
                     .addOnSuccessListener { docSnapshot ->
                         val data = docSnapshot.toObject(DataKeluargaPasien::class.java)
                         if (data != null) {
-                            onSuccess(data) // Mengembalikan data keluarga
+                            onSuccess(data)
                         } else {
                             onFailure(Exception("Data keluarga tidak ditemukan."))
                         }
                     }
                     .addOnFailureListener { exception ->
-                        onFailure(exception) // Jika terjadi kesalahan saat mengambil data
+                        onFailure(exception)
                     }
             }
             .addOnFailureListener { exception ->
-                onFailure(exception) // Jika terjadi kesalahan saat mengambil data user
+                onFailure(exception)
             }
     }
+
+    /**
+     * Simpan data janji temu berdasarkan nama pengguna.
+     */
 
     fun saveDataJanjiTemu(
         janjiTemu: JanjiTemuDokter,
@@ -207,7 +221,9 @@ class FirebaseRegistrasiOnlineHelper(
             }
     }
 
-
+    /**
+     * Ambil data janji temu berdasarkan nama pengguna.
+     */
     fun fetchDataJanjiTemu(
         onSuccess: (JanjiTemuDokter) -> Unit,
         onFailure: (Exception) -> Unit
@@ -234,8 +250,8 @@ class FirebaseRegistrasiOnlineHelper(
                     .orderBy(
                         "dateTimestamp",
                         Query.Direction.DESCENDING
-                    ) // Urutkan berdasarkan tanggal (timestamp) terbaru
-                    .limit(1) // Ambil hanya 1 dokumen terbaru
+                    )
+                    .limit(1)
                     .get()
                     .addOnSuccessListener { result ->
                         if (result.isEmpty) {
@@ -247,22 +263,25 @@ class FirebaseRegistrasiOnlineHelper(
                         val latestJanjiTemu =
                             result.documents.first().toObject(JanjiTemuDokter::class.java)
                         if (latestJanjiTemu != null) {
-                            onSuccess(latestJanjiTemu) // Pass the latest data to the success callback
+                            onSuccess(latestJanjiTemu)
                         } else {
                             onFailure(Exception("Data janji temu tidak ditemukan."))
                         }
                     }
                     .addOnFailureListener { exception ->
-                        onFailure(exception) // If there's an error retrieving the data
+                        onFailure(exception)
                     }
             }
             .addOnFailureListener { exception ->
-                onFailure(exception) // If there's an error retrieving the username
+                onFailure(exception)
             }
     }
 
+    /**
+     * Ambil data history janji temu berdasarkan nama pengguna.
+     */
     fun fetchDataJanjiTemuHistory(
-        onSuccess: (List<JanjiTemuDokter>) -> Unit, // Mengembalikan list data
+        onSuccess: (List<JanjiTemuDokter>) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
         val userId = auth.currentUser?.uid
@@ -297,19 +316,18 @@ class FirebaseRegistrasiOnlineHelper(
                             result.documents.mapNotNull { it.toObject(JanjiTemuDokter::class.java) }
 
                         if (janjiTemuList.isNotEmpty()) {
-                            onSuccess(janjiTemuList) // Pass the list of data to the success callback
+                            onSuccess(janjiTemuList)
                         } else {
                             onFailure(Exception("Data janji temu tidak ditemukan."))
                         }
                     }
                     .addOnFailureListener { exception ->
-                        onFailure(exception) // If there's an error retrieving the data
+                        onFailure(exception)
                     }
             }
             .addOnFailureListener { exception ->
-                onFailure(exception) // If there's an error retrieving the username
+                onFailure(exception)
             }
     }
-
 
 }

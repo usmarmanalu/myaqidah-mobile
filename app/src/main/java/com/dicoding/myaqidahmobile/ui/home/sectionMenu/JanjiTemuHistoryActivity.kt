@@ -20,6 +20,7 @@ import com.dicoding.myaqidahmobile.databinding.*
 class JanjiTemuHistoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityJanjiTemuHistoryBinding
+
     private lateinit var firestore: FirebaseRegistrasiOnlineHelper
     private lateinit var adapter: JanjiTemuHistoryAdapter
     private val janjiTemuList = mutableListOf<JanjiTemuDokter>()

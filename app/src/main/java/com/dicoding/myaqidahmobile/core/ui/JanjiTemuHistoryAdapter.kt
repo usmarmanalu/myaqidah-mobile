@@ -1,8 +1,8 @@
 package com.dicoding.myaqidahmobile.core.ui
 
+import android.annotation.*
 import android.view.*
 import androidx.recyclerview.widget.*
-import com.bumptech.glide.*
 import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.databinding.*
 import com.dicoding.myaqidahmobile.ui.home.sectionMenu.*
@@ -15,10 +15,11 @@ class JanjiTemuHistoryAdapter(
     inner class ViewHolder(private val binding: ItemJanjiTemuHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(item: JanjiTemuDokter) {
             binding.tvInstalasi.text = "Instalasi: " + item.instalasi
             binding.tvPoliklinik.text = "Poliklinik: " + item.poliklinik
-            binding.tvTitle.text = "Janji Temu Dokter: "+ item.dpjp
+            binding.tvTitle.text = "Janji Temu Dokter: " + item.dpjp
 
             binding.tvTanggalKunjungan.text =
                 "Janji temu pada tanggal: " + item.tanggalKunjungan + " "

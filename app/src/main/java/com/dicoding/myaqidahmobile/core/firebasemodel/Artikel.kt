@@ -1,13 +1,13 @@
 package com.dicoding.myaqidahmobile.core.firebasemodel
 
-import android.os.Parcelable
+import android.os.*
 import kotlinx.parcelize.*
 
 @Parcelize
 data class Artikel(
-    var image: String = "",       // Default value for image
-    var title: String = "",       // Default value for title
-    var artikel: String = "",     // Default value for artikel
-    var referensi: String = "",   // Default value for referensi
+    var image: String = "",
+    var title: String = "",
+    var artikel: String = "",
+    var referensi: String = "",
     var uploaded: String = ""
 ) : Parcelable

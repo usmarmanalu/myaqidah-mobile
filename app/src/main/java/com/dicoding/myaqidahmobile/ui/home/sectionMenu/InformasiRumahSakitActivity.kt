@@ -14,8 +14,8 @@ import com.dicoding.myaqidahmobile.databinding.*
 class InformasiRumahSakitActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInformasiRumahSakitBinding
-    private lateinit var firebaseDataManager: FirebaseDataManager
 
+    private lateinit var firebaseDataManager: FirebaseDataManager
     private var isHistoryExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

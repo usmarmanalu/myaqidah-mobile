@@ -1,12 +1,12 @@
 package com.dicoding.myaqidahmobile.ui.service
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.dicoding.myaqidahmobile.R
+import android.content.*
+import android.os.*
+import android.view.*
+import android.widget.*
+import androidx.fragment.app.*
 import com.dicoding.myaqidahmobile.databinding.*
+import com.dicoding.myaqidahmobile.ui.service.navigation.*
 
 class ServiceFragment : Fragment() {
 
@@ -25,7 +25,53 @@ class ServiceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        menuNavigasi()
+    }
 
+
+    private fun menuNavigasi() {
+        binding.apply {
+            rawatjalan.setOnClickListener {
+                val intent = Intent(requireContext(), RawatJalanActivity::class.java)
+                startActivity(intent)
+            }
+            rawatinap.setOnClickListener {
+                val intent = Intent(requireContext(), RawatInapActivity::class.java)
+                startActivity(intent)
+            }
+            lab.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            radiologi.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            farmasi.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            igd.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            icu.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            vk.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            ok.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            fisioterapi.setOnClickListener {
+                Toast.makeText(requireContext(), "Maaf, fitur ini belum tersedia", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
 
     override fun onDestroyView() {

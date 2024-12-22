@@ -14,7 +14,6 @@ import androidx.appcompat.app.*
 import androidx.core.app.*
 import androidx.core.content.*
 import com.dicoding.myaqidahmobile.*
-import com.dicoding.myaqidahmobile.R
 import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.core.helper.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
@@ -31,7 +30,6 @@ class JanjiTemuActivity : AppCompatActivity() {
 
     private lateinit var firebaseHelper: FirebaseRegistrasiOnlineHelper
     private val doctorViewModel: DoctorViewModel by viewModel()
-
 
     @Suppress("DEPRECATION")
     @SuppressLint("SetTextI18n", "DefaultLocale")

@@ -1,14 +1,13 @@
-package com.dicoding.myaqidahmobile.ui.home.sectionMenu
+package com.dicoding.myaqidahmobile.core.ui
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.dicoding.myaqidahmobile.core.firebasemodel.JanjiTemuDokter
-import com.dicoding.myaqidahmobile.databinding.BottomSheetJanjiTemuDetailBinding
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import android.os.*
+import android.view.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
+import com.dicoding.myaqidahmobile.databinding.*
+import com.google.android.material.bottomsheet.*
 
-class JanjiTemuDetailBottomSheet(private val janjiTemu: JanjiTemuDokter) : BottomSheetDialogFragment() {
+class JanjiTemuDetailBottomSheet(private val janjiTemu: JanjiTemuDokter) :
+    BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetJanjiTemuDetailBinding? = null
     private val binding get() = _binding!!

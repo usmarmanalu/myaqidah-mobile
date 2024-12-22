@@ -15,6 +15,7 @@ import com.dicoding.myaqidahmobile.core.utils.*
 import com.dicoding.myaqidahmobile.databinding.*
 import com.google.android.material.snackbar.*
 
+@Suppress("DEPRECATION")
 class BedKTTActivity : AppCompatActivity() {
 
     private var loadingDialog: AlertDialog? = null

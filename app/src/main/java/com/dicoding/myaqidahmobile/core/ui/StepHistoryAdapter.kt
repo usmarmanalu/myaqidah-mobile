@@ -1,13 +1,13 @@
 package com.dicoding.myaqidahmobile.core.ui
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.myaqidahmobile.R
-import com.dicoding.myaqidahmobile.core.firebasemodel.StepHistory
-import com.dicoding.myaqidahmobile.databinding.ItemStepHistoryBinding
-import java.text.SimpleDateFormat
+import android.annotation.*
+import android.view.*
+import androidx.core.content.*
+import androidx.recyclerview.widget.*
+import com.dicoding.myaqidahmobile.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
+import com.dicoding.myaqidahmobile.databinding.*
+import java.text.*
 import java.util.*
 
 class StepHistoryAdapter(private val stepHistoryList: MutableList<StepHistory>) :
@@ -30,16 +30,18 @@ class StepHistoryAdapter(private val stepHistoryList: MutableList<StepHistory>) 
     inner class StepHistoryViewHolder(private val binding: ItemStepHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(stepHistory: StepHistory) {
             // Parse the date string to display formatted date
             val dateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
             val date = dateFormat.parse(stepHistory.date)
-            binding.tvDate.text = "Date: ${dateFormat.format(date)}"
+            binding.tvDate.text = "Date: ${dateFormat.format(date!!)}"
 
             // Set step and calorie values
             binding.tvSteps.text = "Steps: ${stepHistory.steps}"
             binding.tvCalories.text = "Calories: ${stepHistory.calories}"
-            binding.tvStepTarget.text = "Target: ${StepHistory.stepTarget}" // Access via companion object
+            binding.tvStepTarget.text =
+                "Target: ${StepHistory.stepTarget}"
 
             // Update the status based on whether the target is met
             if (stepHistory.isTargetMet()) {
@@ -56,17 +58,17 @@ class StepHistoryAdapter(private val stepHistoryList: MutableList<StepHistory>) 
         }
     }
 
-    // Method to update or add a StepHistory entry by date
-    fun updateOrAddStepHistory(stepHistory: StepHistory) {
-        val existingIndex = stepHistoryList.indexOfFirst { it.date == stepHistory.date }
-        if (existingIndex != -1) {
-            // Update the existing entry
-            stepHistoryList[existingIndex] = stepHistory
-            notifyItemChanged(existingIndex)
-        } else {
-            // Add new entry
-            stepHistoryList.add(stepHistory)
-            notifyItemInserted(stepHistoryList.size - 1)
-        }
-    }
+//    // Method to update or add a StepHistory entry by date
+//    fun updateOrAddStepHistory(stepHistory: StepHistory) {
+//        val existingIndex = stepHistoryList.indexOfFirst { it.date == stepHistory.date }
+//        if (existingIndex != -1) {
+//            // Update the existing entry
+//            stepHistoryList[existingIndex] = stepHistory
+//            notifyItemChanged(existingIndex)
+//        } else {
+//            // Add new entry
+//            stepHistoryList.add(stepHistory)
+//            notifyItemInserted(stepHistoryList.size - 1)
+//        }
+//    }
 }
