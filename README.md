@@ -40,8 +40,26 @@ MyAqidah Mobile adalah aplikasi berbasis Android yang dirancang untuk mempermuda
 4. Sync Gradle.
 5. Jalankan aplikasi pada emulator atau perangkat fisik.
 
-## Struktur Proyek
+### Cara Penggunaan
+1. Login menggunakan kredensial yang valid.
+2. Navigasikan menu utama untuk melihat fitur-fitur:
+ - Jadwal Dokter: Lihat jadwal dokter berdasarkan spesialisasi.
+ - Janji Temu: Buat janji temu dengan dokter pilihan.
+- Visualisasi Data: Lihat indikator layanan rumah sakit.
+3. Pengguna akan menerima notifikasi pengingat sebelum jadwal janji temu.
 
+## Lisensi
+## Kontak
+Untuk pertanyaan lebih lanjut, hubungi:
+
+Nama: Usmar Manalu
+- Email: example@example.com
+- GitHub: usmarmanalu
+- Email: usmarmnl99@gmail.com
+- Github: usmarmanalu
+
+- ## Struktur Proyek
+```plaintext
 MyAqidah-Mobile/
 ├── app/
 │   ├── src/
@@ -61,22 +79,4 @@ MyAqidah-Mobile/
 ├── build.gradle
 ├── settings.gradle
 └── README.md
-
-### Cara Penggunaan
-1. Login menggunakan kredensial yang valid.
-2. Navigasikan menu utama untuk melihat fitur-fitur:
- - Jadwal Dokter: Lihat jadwal dokter berdasarkan spesialisasi.
- - Janji Temu: Buat janji temu dengan dokter pilihan.
-- Visualisasi Data: Lihat indikator layanan rumah sakit.
-3. Pengguna akan menerima notifikasi pengingat sebelum jadwal janji temu.
-
-## Lisensi
-## Kontak
-Untuk pertanyaan lebih lanjut, hubungi:
-
-Nama: Usmar Manalu
-- Email: example@example.com
-- GitHub: usmarmanalu
-- Email: usmarmnl99@gmail.com
-- Github: usmarmanalu
 
