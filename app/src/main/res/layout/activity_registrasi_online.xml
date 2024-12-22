@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:layout_marginStart="16dp"
+    tools:context=".ui.registrasi.RegistrasiOnlineActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <TextView
+            android:id="@+id/tv_noRekamMedis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No.Rekam Medis"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/ed_rekamMedis"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="No.Rekam Medis"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_noRekamMedis" />
+
+        <TextView
+            android:id="@+id/tv_nik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="NIK/No.KTP"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ed_rekamMedis" />
+
+        <EditText
+            android:id="@+id/ed_nik"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Nik/No.KTP"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nik" />
+
+        <TextView
+            android:id="@+id/namePasien"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Nama Pasien"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_nik" />
+
+        <com.dicoding.myaqidahmobile.ui.signup.custom.NameRegistration
+            android:id="@+id/edit_name_registrasi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/namePasien" />
+
+        <TextView
+            android:id="@+id/label_goldar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Golongan Darah"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_name_registrasi" />
+
+        <Spinner
+            android:id="@+id/spinner_goldar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/goldar_array"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_goldar" />
+
+        <TextView
+            android:id="@+id/tempatLahir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tempat Lahir"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_goldar" />
+
+        <EditText
+            android:id="@+id/ed_tempatLahir"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Tempat Lahir"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tempatLahir" />
+
+        <TextView
+            android:id="@+id/label_date_of_birth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tanggal Lahir"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_tempatLahir" />
+
+        <EditText
+            android:id="@+id/edit_date_of_birth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:focusable="false"
+            android:hint="Pilih Tanggal"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_date_of_birth" />
+
+        <TextView
+            android:id="@+id/noHpLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="No. Handphone"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_date_of_birth" />
+
+        <com.dicoding.myaqidahmobile.ui.signup.custom.NoHpRegistration
+            android:id="@+id/noHpValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="No. Handphone"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noHpLabel" />
+
+        <TextView
+            android:id="@+id/label_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Jenis Kelamin"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noHpValue" />
+
+        <Spinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/gender_array"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_gender" />
+
+        <TextView
+            android:id="@+id/label_agama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Agama"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_gender" />
+
+        <Spinner
+            android:id="@+id/spinner_agama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/agama_array"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_agama" />
+
+        <!-- TextInputLayout for AutoCompleteTextView (Place) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_place"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp"
+            android:hint="Prov/Kab/Kota"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/spinner_agama"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_agama">
+
+            <AutoCompleteTextView
+                android:id="@+id/ed_place"
+                style="@style/Widget.MaterialComponents.AutoCompleteTextView.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:hint="Prov/Kab/Kota" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Alamat Lengkap Label -->
+        <TextView
+            android:id="@+id/tv_alamatLengkap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat Lengkap"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ti_place" />
+
+        <!-- EditText for Alamat Lengkap -->
+        <EditText
+            android:id="@+id/ed_alamatLengkap"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Alamat Lengkap"
+            android:inputType="textMultiLine"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alamatLengkap" />
+
+        <TextView
+            android:id="@+id/label_nasabah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nasabah"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_alamatLengkap" />
+
+        <Spinner
+            android:id="@+id/spinner_nasabah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/nasabah_array"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_nasabah" />
+
+        <TextView
+            android:id="@+id/label_nikah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status Perkawinan"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_nasabah" />
+
+        <Spinner
+            android:id="@+id/spinner_nikah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:entries="@array/nikah_array"
+            android:minHeight="48dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_nikah" />
+
+        <TextView
+            android:id="@+id/tv_jkn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No. Kartu JKN"
+            android:textColor="@color/purple3"
+            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_nikah" />
+
+        <!-- EditText for Alamat Lengkap -->
+        <EditText
+            android:id="@+id/ed_jkn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="No. Kartu JKN"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_jkn" />
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/border_buttom"
+            android:backgroundTint="@color/purple3"
+            android:drawablePadding="8dp"
+            android:paddingVertical="12dp"
+            android:text="Simpan"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ed_jkn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

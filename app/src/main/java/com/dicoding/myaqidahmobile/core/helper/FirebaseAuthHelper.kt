@@ -1,17 +1,15 @@
 package com.dicoding.myaqidahmobile.core.helper
 
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.google.firebase.auth.*
 import com.google.firebase.firestore.*
+import java.util.*
 
-data class UserData(
-    val name: String,
-    val dateOfBirth: String,
-    val gender: String,
-    val email: String
-)
+class FirebaseAuthHelper(
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance(),
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-class FirebaseAuthHelper(private val auth: FirebaseAuth, private val db: FirebaseFirestore) {
-
+) {
     fun signUp(
         email: String,
         password: String,
@@ -19,17 +17,13 @@ class FirebaseAuthHelper(private val auth: FirebaseAuth, private val db: Firebas
         onSuccess: (FirebaseUser?) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    user?.let {
-                        saveUserData(it.uid, userData, onSuccess, onFailure)
-                    } ?: onFailure(Exception("User not found after creation"))
-                } else {
-                    onFailure(task.exception ?: Exception("Sign Up Failed"))
-                }
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            task.isSuccessful
+            val user = auth.currentUser
+            user?.let {
+                saveUserData(it.uid, userData, onSuccess, onFailure)
             }
+        }
     }
 
     fun login(
@@ -54,12 +48,50 @@ class FirebaseAuthHelper(private val auth: FirebaseAuth, private val db: Firebas
         onSuccess: (FirebaseUser?) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        db.collection("users").document(userId).set(userData)
+        val db = FirebaseFirestore.getInstance()
+
+        // Create a sub-collection 'dataUser' under 'users' collection
+        db.collection("users")
+            .document(userId)
+            .collection("dataUser")
+            .document(userId)
+            .set(userData)
             .addOnSuccessListener {
                 onSuccess(auth.currentUser)
             }
             .addOnFailureListener { exception ->
                 onFailure(exception)
             }
+    }
+
+    fun saveTargetData(
+        stepTarget: Int,
+        stepsAchieved: Float,
+        onSuccess: () -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        val userId = auth.currentUser?.uid ?: return
+        val status = if (stepsAchieved >= stepTarget) "Tercapai" else "Belum Tercapai"
+        val message = if (stepsAchieved >= stepTarget) {
+            "Selamat! Target langkah Anda tercapai."
+        } else {
+            "Sayang sekali! Target langkah Anda belum tercapai."
+        }
+
+        val targetData = mapOf(
+            "targetSteps" to stepTarget,
+            "stepsAchieved" to stepsAchieved,
+            "status" to status,
+            "message" to message,
+            "date" to Date()
+        )
+
+        // Store target data in the 'dataStepsTarget' sub-collection
+        db.collection("users")
+            .document(userId)
+            .collection("dataStepsTarget")
+            .add(targetData)
+            .addOnSuccessListener { onSuccess() }
+            .addOnFailureListener { onFailure(it) }
     }
 }

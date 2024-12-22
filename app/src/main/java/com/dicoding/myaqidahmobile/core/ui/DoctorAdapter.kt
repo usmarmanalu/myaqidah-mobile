@@ -34,14 +34,14 @@ class DoctorAdapter(
             binding.textSchedule.text = data.schedule
             binding.textType.text = data.type
 
-            // Set the initial favorite status
-            setStatusFavorite(data.isFavorite)
+            val newStatus = data.isFavorite
+            setStatusFavorite(newStatus)
 
             binding.imageFavorite.setOnClickListener {
-                val newStatus = !data.isFavorite
-                data.isFavorite = newStatus // Update favorite status in the model
-                onFavoriteClick?.invoke(data)// Notify the fragment/activity
-                setStatusFavorite(newStatus) // Update the icon
+                data.isFavorite = !newStatus
+                onFavoriteClick?.invoke(data)
+                setStatusFavorite(data.isFavorite)
+
                 Toast.makeText(
                     itemView.context,
                     if (newStatus) "Berhasil ditambahkan ke favorite" else "Berhasil dihapus dari favorite",
@@ -55,13 +55,12 @@ class DoctorAdapter(
             }
         }
 
-        private fun setStatusFavorite(isFavorite: Boolean) {
-            binding.imageFavorite.setImageDrawable(
-                ContextCompat.getDrawable(
-                    itemView.context,
-                    if (isFavorite) R.drawable.favorite_filled else R.drawable.favorite_outlined
-                )
-            )
+        private fun setStatusFavorite(statusFavorite: Boolean) {
+            if (statusFavorite) {
+                binding.imageFavorite.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.favorite_filled))
+            } else {
+                binding.imageFavorite.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.favorite_outlined))
+            }
         }
     }
 

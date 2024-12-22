@@ -7,7 +7,7 @@ import androidx.core.app.*
 import androidx.core.util.*
 import androidx.recyclerview.widget.*
 import com.bumptech.glide.*
-import com.dicoding.myaqidahmobile.core.model.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.databinding.*
 import com.dicoding.myaqidahmobile.ui.home.*
 
@@ -57,6 +57,5 @@ class ArtikelAdapter(private val listArtikel: ArrayList<Artikel>) :
     }
 
     override fun getItemCount(): Int = listArtikel.size
-
 
 }

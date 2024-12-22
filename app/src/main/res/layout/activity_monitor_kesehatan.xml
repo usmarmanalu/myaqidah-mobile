@@ -1,10 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.sectionMenu.MonitorKesehatanActivity">
+    android:padding="16dp"
+    android:layout_margin="16dp"
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
+
+    <!-- Card View for Google Fit Data Message -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardGoogleFitMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/green"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <TextView
+            android:id="@+id/tvGoogleFitMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data langkah dan kalori diambil dari Google Fit."
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Step Target Input Section -->
+    <EditText
+        android:id="@+id/etStepTarget"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan target langkah"
+        android:inputType="number"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardGoogleFitMessage" />
+
+    <Button
+        android:id="@+id/btnSetTarget"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple3"
+        android:text="Atur Target"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:background="@drawable/border_buttom"
+        android:textAllCaps="false"
+        android:layout_marginTop="16dp"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etStepTarget"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <!-- Step Target Display -->
+    <TextView
+        android:id="@+id/tvTargetSteps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Target Langkah: Belum ditentukan"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/btnSetTarget"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <!-- Display Steps and Calories Data -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardStepsCalories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:backgroundTint="@color/blue_soft"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTargetSteps"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Langkah Harian: 0"
+                android:textSize="16sp"
+
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="4dp"
+                android:drawableLeft="@drawable/run" />
+
+            <TextView
+                android:id="@+id/tvCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kalori Terbakar: 0"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/calories" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Line Chart for Steps and Calories Data -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardStepsCalories" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

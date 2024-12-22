@@ -40,8 +40,8 @@ class AqidahRepository(
         }
     }
 
-    override fun setFavoriteJadwalDoctors(doctor: JadwalDoctors, state: Boolean) {
-        val jadwalDoctorEntity = DataMapper.mapDomainToEntity(doctor)
+    override fun setFavoriteJadwalDoctors(jadwalDoctors: JadwalDoctors, state: Boolean) {
+        val jadwalDoctorEntity = DataMapper.mapDomainToEntity(jadwalDoctors)
         appExecutors.diskIO().execute {
             localDataSource
                 .setFavoriteJadwalDoctor(jadwalDoctorEntity, state)

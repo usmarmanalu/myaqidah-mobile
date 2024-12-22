@@ -5,6 +5,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        tools:ignore="SelectedPhotoAccess" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:name=".MyApplication"
@@ -13,24 +22,53 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/securiry"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyAqidahMobile"
         tools:targetApi="31">
         <activity
-            android:name=".ui.jadwal.favorite.FavoriteActivity"
-            android:theme="@style/AppTheme"
+            android:name=".ui.service.navigation.RawatInapActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.service.navigation.RawatJalanActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.home.sectionMenu.JanjiTemuHistoryActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.registrasi.RegistrasiOnlineActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.registrasi.DataKeluargaActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.home.sectionMenu.StepHistoryActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.profile.terms.TermsActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.profile.rating.RatingActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.profile.profilepasien.ProfilePasienActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.jadwal.favorite.FavoriteActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.home.ArtikelActivity"
             android:exported="false"
             android:theme="@style/AppTheme" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBc1Vbywy0RE6Y4WxCCvlS_qfqp1H64qrU" />
-
         <activity
             android:name=".ui.home.menu.MapsActivity"
             android:exported="false"
@@ -111,6 +149,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCZGhadAyTK0VVNeGPw3dmtZwX_428InQM" />
+        <meta-data
+            android:name="com.google.android.gms.auth.api.fitness.SIGN_IN"
+            android:value="433396119434-pjh4on4lvqlks09afk2umvrl2u5osh9n.apps.googleusercontent.com.apps.googleusercontent.com" />
     </application>
 
 </manifest>

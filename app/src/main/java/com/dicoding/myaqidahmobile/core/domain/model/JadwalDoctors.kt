@@ -9,6 +9,6 @@ data class JadwalDoctors(
     val image: String,
     val schedule: String,
     val name: String,
+    val type: String,
     var isFavorite: Boolean,
-    val type: String
 ) : Parcelable

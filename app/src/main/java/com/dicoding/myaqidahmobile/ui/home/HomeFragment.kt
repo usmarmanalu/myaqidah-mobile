@@ -1,5 +1,6 @@
 package com.dicoding.myaqidahmobile.ui.home
 
+import com.dicoding.myaqidahmobile.ui.home.sectionMenu.MonitorKesehatanActivity
 import android.animation.*
 import android.annotation.*
 import android.content.*
@@ -11,11 +12,12 @@ import androidx.fragment.app.*
 import androidx.recyclerview.widget.*
 import com.dicoding.myaqidahmobile.R
 import com.dicoding.myaqidahmobile.core.helper.*
-import com.dicoding.myaqidahmobile.core.model.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.core.ui.*
 import com.dicoding.myaqidahmobile.databinding.*
 import com.dicoding.myaqidahmobile.ui.home.menu.*
 import com.dicoding.myaqidahmobile.ui.home.sectionMenu.*
+import com.dicoding.myaqidahmobile.ui.registrasi.*
 import com.google.android.material.snackbar.*
 import com.google.firebase.auth.*
 
@@ -76,6 +78,11 @@ class HomeFragment : Fragment() {
         loadDataForCarouselBerita()
         loadDataForCarouselGallery()
         loadArticles()
+
+        binding.fabRegistrasi.setOnClickListener {
+            val intent = Intent(requireContext(), RegistrasiOnlineActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun showLoadingDialog() {

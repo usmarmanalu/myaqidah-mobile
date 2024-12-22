@@ -8,7 +8,7 @@ import android.widget.*
 import androidx.activity.*
 import androidx.appcompat.app.*
 import androidx.core.content.*
-import com.dicoding.myaqidahmobile.R
+import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
 import com.dicoding.myaqidahmobile.databinding.*
 import com.google.firebase.auth.*
@@ -70,7 +70,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

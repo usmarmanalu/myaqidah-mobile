@@ -1,24 +1,64 @@
 package com.dicoding.myaqidahmobile.core.helper
 
-import com.dicoding.myaqidahmobile.core.model.*
-import com.google.firebase.auth.*
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.google.firebase.firestore.*
 
 class FirebaseDataManager {
 
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+    fun getUserReference(userId: String): DocumentReference {
+        return firestore.collection("users").document(userId).collection("dataUser")
+            .document(userId)
+    }
+
     fun getCurrentUserName(userId: String, onSuccess: (String) -> Unit) {
+        firestore.collection("users")
+            .document(userId)
+            .collection("dataUser")
+            .document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val name = document.getString("name")
+                    onSuccess.invoke(name.orEmpty())
+                } else {
+                    onSuccess.invoke("")
+                }
+            }
+            .addOnFailureListener { _ ->
+                onSuccess.invoke("")
+            }
+    }
+
+    fun getCurrentUser(
+        userId: String,
+        onSuccess: (String, String, String, String, String, String) -> Unit
+    ) {
         firestore.collection("users").document(userId)
+            .collection("dataUser")
+            .document(userId)
             .get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    val name = document.getString("name")
-                    onSuccess.invoke(name.orEmpty())
+                    val name = document.getString("name").orEmpty()
+                    val dateBird = document.getString("dateOfBirth").orEmpty()
+                    val gender = document.getString("gender").orEmpty()
+                    val noHp = document.getString("noHp").orEmpty()
+                    val email = document.getString("email").orEmpty()
+                    val profileImageUrl = document.getString("profileImageUrl").orEmpty()
+                    onSuccess.invoke(name, dateBird, gender, noHp, email, profileImageUrl)
+                } else {
+                    // Optional: Handle if the document is not found
+                    onSuccess.invoke("", "", "", "", "", "")
                 }
             }
+            .addOnFailureListener {
+                // Optional: Handle failure case, e.g., log error or invoke with empty values
+                onSuccess.invoke("", "", "", "", "", "")
+            }
     }
+
 
     fun getHospitalInformation(
         onSuccess: (String, String, String, String, String) -> Unit,
@@ -75,9 +115,14 @@ class FirebaseDataManager {
             .get()
             .addOnSuccessListener { documents ->
                 val items = documents.map { document ->
-                    val image = document.getString("image").orEmpty()
-                    val url = document.getString("url").orEmpty()
-                    image to url
+                    try {
+                        val image = document.getString("image").orEmpty()
+                        val url = document.getString("url").orEmpty()
+                        image to url
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        "" to ""
+                    }
                 }
                 onSuccess.invoke(items)
             }
@@ -112,13 +157,79 @@ class FirebaseDataManager {
             .addOnSuccessListener { documents ->
                 val articles = mutableListOf<Artikel>()
                 for (document in documents) {
-                    val artikel = document.toObject(Artikel::class.java)
-                    articles.add(artikel)
+                    try {
+                        val artikel = document.toObject(Artikel::class.java)
+                        articles.add(artikel)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
                 onSuccess(articles)
             }
             .addOnFailureListener { exception ->
                 onFailure(exception)
+            }
+    }
+
+    fun getDataBedKTT(
+        onSuccess: (List<BedKTT>) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        firestore.collection("bed_ktt").get()
+            .addOnSuccessListener { documents ->
+                val listBedKTT = mutableListOf<BedKTT>()
+                for (document in documents) {
+                    try {
+                        val bedKTT = document.toObject(BedKTT::class.java)
+                        listBedKTT.add(bedKTT)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+                onSuccess(listBedKTT)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    fun getRawatJalan(
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+
+    ) {
+        firestore.collection("rawat_jalan")
+            .limit(1)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val document = documents.documents[0]
+                    val image = document.getString("image").orEmpty()
+                    onSuccess.invoke(image)
+                }
+            }
+            .addOnFailureListener { exception ->
+                onFailure.invoke(exception)
+            }
+    }
+
+    fun getRawatInap(
+        onSuccess: (String) -> Unit,
+        onFailure: (Exception) -> Unit
+
+    ) {
+        firestore.collection("rawat_inap")
+            .limit(1)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (!documents.isEmpty) {
+                    val document = documents.documents[0]
+                    val image = document.getString("image").orEmpty()
+                    onSuccess.invoke(image)
+                }
+            }
+            .addOnFailureListener { exception ->
+                onFailure.invoke(exception)
             }
     }
 }

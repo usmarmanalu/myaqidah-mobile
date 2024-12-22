@@ -6,10 +6,11 @@ import android.view.*
 import androidx.activity.*
 import androidx.appcompat.app.*
 import androidx.core.content.*
-import com.dicoding.myaqidahmobile.R
+import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
 import com.dicoding.myaqidahmobile.databinding.*
 
+@Suppress("DEPRECATION")
 class AllLayananActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAllLayananBinding

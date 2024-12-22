@@ -94,7 +94,7 @@
             android:id="@+id/tv_version"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ver 8.0.1 (310)"
+            android:text="ver 0.0.1 \nusmar manalu"
             android:textSize="12sp"
             android:layout_marginTop="16dp"
             android:textColor="@color/grey"

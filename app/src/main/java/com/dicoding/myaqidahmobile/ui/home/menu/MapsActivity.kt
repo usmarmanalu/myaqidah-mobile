@@ -7,7 +7,7 @@ import android.view.*
 import androidx.activity.result.contract.*
 import androidx.appcompat.app.*
 import androidx.core.content.*
-import com.dicoding.myaqidahmobile.R
+import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
 import com.dicoding.myaqidahmobile.databinding.*
 import com.google.android.gms.maps.*
@@ -51,7 +51,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         getMyLocation()
 
         val rsAqidah = LatLng(-6.249312, 106.702285)
-        mMap.addMarker(MarkerOptions().position(rsAqidah).title("Rumah Sakit Aqidah").snippet("Jl. Raden Patah No.40"))
+        mMap.addMarker(
+            MarkerOptions().position(rsAqidah).title("Rumah Sakit Aqidah")
+                .snippet("Jl. Raden Patah No.40")
+        )
         mMap.moveCamera(CameraUpdateFactory.newLatLng(rsAqidah))
 
         boundsBuilder.include(rsAqidah)

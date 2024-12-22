@@ -7,7 +7,7 @@ import androidx.activity.*
 import androidx.appcompat.app.*
 import androidx.core.content.*
 import androidx.databinding.*
-import com.dicoding.myaqidahmobile.R
+import com.dicoding.myaqidahmobile.*
 import com.dicoding.myaqidahmobile.core.utils.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
 import com.dicoding.myaqidahmobile.databinding.*

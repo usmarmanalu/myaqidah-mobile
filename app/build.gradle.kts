@@ -5,11 +5,12 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+    alias(libs.plugins.google.firebase.crashlytics)
 }
 
 android {
     namespace = "com.dicoding.myaqidahmobile"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.dicoding.myaqidahmobile"
@@ -19,6 +20,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "BASE_TOKEN", "\"pk.eyJ1IjoiYXJpZmFpemluIiwiYSI6ImNrYTI2c3R1cjAwNXAzbm1zaDYyZW1ra2cifQ.okSWF0zf58rWkhoVuYjShQ\"")
+
     }
 
     buildTypes {
@@ -40,6 +43,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 }
 
@@ -51,11 +55,16 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.play.services.maps)
+    implementation(libs.firebase.crashlytics)
+
+//    Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation(libs.androidx.runner)
 
-    // Firebase
+//  Firebase
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.firebase.firestore)
@@ -81,7 +90,9 @@ dependencies {
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.activity.ktx) //by viewModels()
+    implementation(libs.androidx.lifecycle.runtime.ktx) //lifecycleScope
+    implementation(libs.androidx.lifecycle.livedata.ktx) //asLiveData
 
     // Injection
     implementation(libs.koin.android)
@@ -98,5 +109,31 @@ dependencies {
 
     // Bar
     implementation (libs.mpandroidchart)
+
+    // Google Auth
+    implementation(libs.play.services.auth)
+
+    // Google Fitness
+    implementation(libs.gms.play.services.fitness)
+    implementation(libs.play.services.location)
+    implementation(libs.play.services.maps)
+
+    implementation(platform(libs.firebase.bom))
+
+    implementation(libs.gridlayout)
+
+    //mockito
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+
+    //special testing
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.kotlin)
+
+    // Koin
+    testImplementation(libs.koin.test)
+    testImplementation(libs.koin.test.junit4)
+    testImplementation(libs.mockk)
 
 }

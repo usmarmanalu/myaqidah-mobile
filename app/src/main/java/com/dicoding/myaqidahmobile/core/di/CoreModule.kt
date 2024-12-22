@@ -34,9 +34,10 @@ val networkModule = module {
             .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
+
     single {
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.92.170:5000/")
+            .baseUrl("https://flask-production-f9f2.up.railway.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(get())
             .build()

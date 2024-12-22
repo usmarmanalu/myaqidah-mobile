@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.appcompat.app.*
 import androidx.core.content.*
 import com.dicoding.myaqidahmobile.R
+import com.dicoding.myaqidahmobile.core.firebasemodel.*
 import com.dicoding.myaqidahmobile.core.helper.*
 import com.dicoding.myaqidahmobile.core.utils.DrawableUtils.getWhiteBackArrowDrawable
 import com.dicoding.myaqidahmobile.databinding.*
@@ -74,13 +75,14 @@ class SignUpActivity : AppCompatActivity() {
         val name = binding.editNameRegistrasi.text.toString().trim()
         val dateOfBirth = binding.editDateOfBirth.text.toString().trim()
         val gender = binding.spinnerGender.selectedItem.toString().trim()
+        val noHp = binding.noHpValue.text.toString().trim()
         val email = binding.editEmailRegistrasi.text.toString().trim()
         val password = binding.passwordEditText.text.toString().trim()
 
-        if (name.isNotEmpty() && dateOfBirth.isNotEmpty() && gender.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty()) {
+        if (name.isNotEmpty() && dateOfBirth.isNotEmpty() && gender.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && noHp.isNotEmpty()) {
             binding.progressBarSignup.visibility = View.VISIBLE
 
-            val userData = UserData(name, dateOfBirth, gender, email)
+            val userData = UserData(name, dateOfBirth, noHp, gender, email)
             firebaseAuthHelper.signUp(email, password, userData,
                 onSuccess = {
                     binding.progressBarSignup.visibility = View.GONE

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MyAqidahMobile" parent="Theme.Material3.Light">
         <!-- Customize your dark theme here. -->
-         <item name="colorPrimary">@color/purple2</item>
+         <item name="colorPrimary">@color/blue_soft</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="progressBarStyle">@color/purple3</item>

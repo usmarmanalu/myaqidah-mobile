@@ -1,8 +1,11 @@
 package com.dicoding.myaqidahmobile.ui.home.sectionMenu
 
+import android.annotation.*
 import android.graphics.drawable.*
 import android.os.*
 import android.view.*
+import android.webkit.*
+import android.widget.*
 import androidx.activity.*
 import androidx.appcompat.app.*
 import androidx.core.content.*
@@ -14,6 +17,7 @@ class RekananActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRekananBinding
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,6 +39,30 @@ class RekananActivity : AppCompatActivity() {
                 )
             )
         }
+
+        binding.webView.settings.javaScriptEnabled = true
+
+        binding.webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView, url: String) {
+                view.loadUrl("javascript:alert('Web RS Aqidah berhasil dimuat')")
+            }
+        }
+
+        binding.webView.webChromeClient = object : WebChromeClient() {
+            override fun onJsAlert(
+                view: WebView,
+                url: String,
+                message: String,
+                result: android.webkit.JsResult
+            ): Boolean {
+                Toast.makeText(this@RekananActivity, message, Toast.LENGTH_LONG).show()
+                result.confirm()
+                return true
+            }
+        }
+
+        binding.webView.loadUrl("https://www.rsaqidah.com/rekanan")
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
