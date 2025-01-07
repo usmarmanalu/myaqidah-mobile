@@ -53,7 +53,6 @@ MyAqidah Mobile adalah aplikasi berbasis Android yang dirancang untuk mempermuda
 Untuk pertanyaan lebih lanjut, hubungi:
 
 Nama: Usmar Manalu
-- Email: example@example.com
 - GitHub: usmarmanalu
 - Email: usmarmnl99@gmail.com
 - Github: usmarmanalu
